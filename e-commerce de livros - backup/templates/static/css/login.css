@@ -1,0 +1,72 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.containera{
+    
+    
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-areas: "infosi";
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.inp{
+    width: 70%;
+}
+
+
+
+.infosi{
+
+
+    grid-area: infosi;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 40%;
+}
+
+.infosi > form{
+    border-radius: 16px;
+    background-color: #413F44;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.infosi > form > h3{
+    margin: 15px;
+    color: white;
+}
+
+#sub-a{
+    margin: 10px;
+
+}
+
+.infosi > form > a{
+    text-decoration: none;
+    float: left;
+}
+
+.infosi > form > p{
+    margin-top: 5px;
+    float: left;
+}
+
+
+@media(max-width:460px){
+    header{
+        flex-direction: column;
+        gap: 16px;
+    }
+}

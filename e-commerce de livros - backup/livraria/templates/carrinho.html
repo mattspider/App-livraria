@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block 'css'%} <link rel="stylesheet" href="{% static 'css/carrinho.css' %}"> {%endblock%}
+
+{%block 'main'%}
+
+{%for x in kart%}
+<article>
+
+    <section>
+        {% if x.livros.image%}
+                <div class="image">
+                    <img src="{{x.livros.image.url }}" alt="">
+                </div>
+            {%endif%}
+            <div class="inf">
+                <h1>{{x.livros.titulo}}</h1>
+                <p>{{x.livros.descricao}}</p>
+                <p>{{x.livros.autor}}</p>
+                <p>{{x.quantidade}}</p>
+                <p>{{x.total}}</p>
+                <a href="{%url 'deletar' x.livros.id%}" class="delete">excluir item do carrinho</a>
+            </div>
+
+    </section>
+            
+
+</article>
+{%endfor%}
+
+<div class="sla">
+    <a href="{%url 'checkout' %}" class="remove" style="text-align: center;">Remover todos itens</a>
+    <a href="#" style="text-align: center;"">Finalizar compra</a>
+</div>
+
+
+{%endblock%}

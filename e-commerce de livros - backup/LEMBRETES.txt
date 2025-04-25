@@ -1,0 +1,19 @@
+lembretes:
+
+PRIORIDADES:
+
+- fazer a as views do carrinho, colocar todos as informações no html e estilizar no css
+
+- fazer funcionalidade(model), para que o usuario avaliar só uma vez
+
+- fazer as avaliações(estrelas) aparecerem na index
+
+- fazer o link do botão carrinho
+
+- testar para solucionar possíveis erros
+
+SE SOBRAR TEMPO:
+
+- ver possivel solução para responsividade da pagina index
+
+- estilar melhor o site

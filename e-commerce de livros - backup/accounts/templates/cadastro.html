@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{%load static%}
+
+{%block 'css'%} <link rel="stylesheet" href="{% static 'css/cadastro.css'%}"> {%endblock%}
+
+{%block 'main'%}
+
+{% if messages %}
+    {% for i in messages %}
+        <script>alert("{{i}}")</script>
+    {% endfor %}
+{% endif %}
+
+    <div class="containera">
+        <div class="infosi">
+            <img src="logo.png" alt="">
+            <form action="" method="POST">{% csrf_token %}
+                <h3>Nome de usuário</h3>
+                <input type="text" id="usuario" name="usuario" class="inp">
+                <h3>senha</h3>
+                <input type="password" name="senha" id="senha" class="inp">
+                <h3>Repita a senha</h3>
+                <input type="password" name="repeat_senha" id="repeat_senha" class="inp">
+                <input type="submit" value="Registrar" class="sub-a">
+                <p>já tem uma conta?</p>
+                <a href="{%url 'login'%}">Logar</a>
+            </form>
+        </div>
+    </div>
+    
+
+
+{%endblock%}

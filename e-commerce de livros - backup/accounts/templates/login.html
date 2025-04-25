@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block 'css'%}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{%endblock%}
+
+{%block 'main'%}
+
+    {% if messages %}
+        {% for i in messages %}
+            <script>alert("{{i}}")</script>
+        {% endfor %}
+    {% endif %}
+
+    <div class="containera">
+        <div class="infosi">
+            <img src="logo.png" alt="">
+            <form action="" method="POST">{% csrf_token %}
+
+                <h3>Nome de Usuário</h3>
+                <input type="text" name="usuario" id="usuario" class="inp">
+                <h3>Senha</h3>
+                <input type="password" name="senha" id="senha" class="inp">
+                <input type="submit" value="Logar" id="sub-a">
+                <p>não tem uma conta?</p>
+                <a href="{%url 'cadastro' %}">Crie uma conta</a>
+
+            </form>
+        </div>
+    </div>
+
+{%endblock%}
+    

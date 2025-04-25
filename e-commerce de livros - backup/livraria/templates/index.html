@@ -1,0 +1,222 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>index</title>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <img src="{% static 'img/logo.png' %}" alt="">
+
+            <a href="{% url 'index'%}">Página inicial</a>
+        
+            <a href="">Ajuda</a>
+
+            <a href="">Rastrear</a>
+
+            <a href="{% url 'carrinho' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="log">deslogar</a>
+            {% else %}
+                <a href="{% url 'login' %}">Logar</a>
+            {%endif%}
+            
+        </header>
+
+        {% if messages %}
+            {% for i in messages %}
+                <script>alert("{{i}}")</script>
+            {% endfor %}
+        {% endif %}
+
+        <main>
+            <div class="slider">
+
+                <div class="drop">
+                    <ul class="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sobre</a></li>
+                              <li class="genre"><a href="#">Gêneros</a>
+                                 <ul class= "dropdown">
+                                      <li><a href="#">terror</a></li>
+                                      <li><a href="#">suspense</a></li>
+                                      <li><a href="#">Drama</a></li>
+                                      <li><a href="#">ficção cientifica</a></li>
+                                      <li><a href="#">Romance</a></li>
+                                      <li><a href="#">ação</a></li>
+                                      <li><a href="#">filosofia</a></li>
+                                      <li><a href="#">Sociologia</a></li>
+                                      <li><a href="#">Coisas que deve passar longe</a></li>
+                                    </ul>
+                            </li>
+                        <li><a href="#">Links</a></li>
+                        <li><a href="#">Contato</a></li>
+                </div>
+
+                <div class="slides">
+                </div>
+
+            </div>
+            
+
+            <div class="avaliados">
+
+                <div class="title_av">
+                    <h1>Mais bem avaliados</h1>
+                </div>
+                
+                    <div class="av">
+                        {%for i in melhores%}
+                
+                                {%if i.img %}
+                                <img src="{{i.img}}" alt="">
+                                {%endif%}  
+                                
+                                
+                            <div class="desc">
+                                    <h1>{{i.titulo}}</h1>
+                                    <p>Escrito por:{{i.autor}}</p>
+                                    <p>Valor:{{i.valor}}</p>
+                                    <p>Número de Avaliações: {{i.qtd_avaliation}}</p>
+                                    <h3>Avaliações</h3>
+                                    {%if i.total_stars == 5%}
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    {%elif i.total_stars == 4%}
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    {%elif i.total_stars == 3%}
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    {%elif i.total_stars == 2%}
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    {%elif i.total_stars == 1%}
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    {%else%}
+                                        <div class="stars"></div>
+                                    {%endif%}
+                                    <a href="{%url 'produto' i.id%}">Ver mais</a>
+                            </div>
+                        {%endfor%}
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+        
+    
+    </div>
+    <h1 class="livros_title">Livros</h1> 
+    <div class="todosLivros">
+          
+        {%for x in todos%}
+            <div class="cont">
+
+                {% if x.img%}
+                    <img src="{{x.img}}" alt="">
+                {%endif%}
+
+                <h2>{{x.titulo}}</h2>
+                <p>Escrito por:{{x.autor}}</p>
+                <p>Valor: {{x.valor}}</p>
+                <p>Numero de avaliações: {{x.qtd_avaliation}}</p>
+                <a href="{%url 'produto' x.id%}">Ver mais</a>
+                <h3>Avalaiações</h3>
+                {% if x.total_stars == 5 %}
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    {% elif x.total_stars == 4 %}
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    {% elif x.total_stars == 3 %}
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    {% elif x.total_stars == 2 %}
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    {%elif x.total_stars == 1%}
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    {%else%}
+                    <div class="stars">
+                    </div>
+                    {%endif%}
+            </div>
+        {%endfor%} 
+
+    </div>
+    
+        <div class="paginate">
+            
+                <span class="step-links">
+                    
+                    {% if melhores.has_previous %}
+                        <a href="?page={{ melhores.previous_page_number }}">Anterior</a>
+                    {% endif %}
+                    
+                    <span class="current">
+                        {{ melhores.number }} de {{ melhores.paginator.num_pages }}
+                    </span>
+
+                    {% if melhores.has_next %}
+                        <a href="?page={{ melhores.next_page_number }}">Proximo</a>
+                    {% endif %}
+                    
+                </span>
+            
+        </div>
+    
+    <footer>
+        <div class="foot">
+            <p>desenvolvidor por Matt © todos os diretos reservados</p>
+        </div>
+    </footer>
+    
+
+
+
+</body>
+</html>

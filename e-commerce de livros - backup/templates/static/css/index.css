@@ -1,0 +1,368 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+
+    background-color: #D3D0CB;
+    margin-bottom: -10px;
+}
+
+.stars > i{
+    color: gold;
+}
+
+.container{
+    grid-area: "container";
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 133px 4fr;
+    grid-template-areas: "header" "main";
+
+}
+
+.todosLivros{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+}
+
+.cont >img{
+    width: 170px;
+    height: 200px;
+}
+
+.cont > a{
+    text-decoration: none;
+    color: black;
+}
+
+.cont > p{
+    margin: 5px;
+
+} 
+
+header{
+    width: 100%;
+    height: fit-content;
+    grid-area: header;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    background-color: #413F44 ;
+
+}
+
+
+form > button{
+    background-color: white;
+    margin-left: -6px;
+}
+
+header > form > input{
+    width: 120px;
+}
+
+header > a{
+    text-decoration: none;
+    color: white;
+}
+
+span{
+    background-color: gray;
+    color: black;
+    width: 100%;
+}
+
+main{
+    height: fit-content;
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 474px 1fr;
+    grid-template-areas: "slider slider slider slider slider" 
+    "avaliados avaliados avaliados avaliados avaliados";
+
+    }
+
+footer{
+    height: 100%;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+}
+
+
+.foot{
+    width: 100%;
+    position: relative;
+}
+
+.foot > p{
+    background-color: #413F44;
+    color: white;
+    text-align: center;
+}
+
+.slider{
+    height: fit-content;
+    grid-area: slider;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 18px 456px;
+    grid-template-areas:"drop" "slides" ;
+}
+
+
+.drop{
+    grid-area: drop;
+}
+
+.drop > ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.dropdown > li{
+    list-style: none;
+}
+
+.dropdown > li > a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu > li > a{
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown{
+    visibility: collapse;
+    opacity: 0;
+    position: absolute;
+    border-radius: 8px;
+    background-color: #413F44;
+    transition: .3s;
+}
+
+
+.genre:hover .dropdown{
+    opacity: 1;
+    visibility: visible;
+
+    
+}
+
+
+.slides{
+    grid-area: slides;
+    background-size: contain;
+    background-repeat:no-repeat ;
+    background-position: center;
+    animation: move 10s infinite linear;
+}
+.slides::before{
+    transform: translateY(-5%);;
+    content: "";
+    position: relative;
+    display: block;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(32px);
+    background-position: center;
+    animation: move 10s infinite linear;
+}
+
+
+
+@keyframes move{
+    0%{background-image: url('../img/download.jpg');}
+    30%{background-image: url('../img/download.jpg');}
+    33%{background-image: url('../img/f031feecd83d13099bdacacffa509527--cabanas-besta.jpg');}
+    63%{background-image: url('../img/f031feecd83d13099bdacacffa509527--cabanas-besta.jpg');}
+    66%{background-image: url('../img/images.jpg');}
+    96%{background-image: url('../img/images.jpg');}
+    100%{background-image: url('../img/download.jpg');}
+
+}
+
+.avaliados{
+    height: fit-content;
+    grid-area: avaliados;
+    display: inline-block;
+
+}
+
+.title_av{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.stars{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.avaliados > div > img{
+    height: 200px;
+    width: 150px;
+}
+
+
+.av{
+
+    background-color: #19161d;
+    display: flex;
+    flex-direction:inherit;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.av > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.desc > h3{
+    text-align: center;
+    color: white;
+}
+
+.desc > h1{
+    color: white;
+}
+
+.desc > p{
+    color: white;
+    margin: 5px;
+} 
+
+.desc > a{
+    text-decoration: none;
+    color: rgb(165, 158, 158);
+}
+
+
+.pagination{
+
+    align-items: center;
+    text-align: center;
+    grid-area: pagination;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.pagination > span{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 30px;
+}
+.current{
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-self: center;
+
+
+}
+
+
+
+.pagination > a{
+    text-align: center;
+}
+
+
+.paginate{
+    align-items: center;
+    text-align: center;
+    grid-area: paginate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.paginate > span{
+    
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 30px;
+}
+
+.paginate > a{
+    text-align: center;
+
+}
+
+.livros_title{
+    text-align: center;
+}
+
+@media(max-width:1065px){
+    .av{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media(max-width:1065px){
+    .todosLivros{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media(max-width:613px){
+    .slides{
+        height: 456px;
+    }
+
+    .avaliados{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media(max-width:383px){
+
+
+    header > img{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
